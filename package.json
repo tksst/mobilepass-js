@@ -1,10 +1,9 @@
 {
-  "name": "your-package-name-here",
+  "name": "mobilepass",
   "version": "0.0.0-development",
-  "private": true,
-  "description": "description",
-  "homepage": "https://example.example/your-website",
-  "repository": "github:tksst/repository-name",
+  "description": "A reimplementation of the MobilePASS client in any environment of JavaScript",
+  "homepage": "https://github.com/tksst/mobilepass-js",
+  "repository": "github:tksst/mobilepass-js",
   "license": "Apache-2.0",
   "author": {
     "name": "Takashi Sato",
@@ -18,7 +17,7 @@
   },
   "types": "./dist/lib/index.d.ts",
   "bin": {
-    "typescript-node-starter": "./dist/bin/index.js"
+    "mobilepass": "./dist/bin/index.js"
   },
   "scripts": {
     "clean": "tss-rmrf ./dist/",

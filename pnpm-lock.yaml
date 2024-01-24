@@ -57,7 +57,7 @@ importers:
         specifier: 1.2.2
         version: 1.2.2
 
-  packages/package-you-should-rename:
+  packages/mobilepass-core:
     dependencies:
       source-map-support:
         specifier: 0.5.21

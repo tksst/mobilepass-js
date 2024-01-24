@@ -1,5 +1,5 @@
 {
-  "name": "your-package-name-here",
+  "name": "@mobilepass/core",
   "version": "0.0.0-development",
   "private": true,
   "description": "description",

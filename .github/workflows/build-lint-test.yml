@@ -13,7 +13,7 @@ on:
 jobs:
   check-skippable:
     continue-on-error: true
-    runs-on: ubuntu-22.04
+    runs-on: self-hosted
     permissions:
       actions: write
       contents: read
@@ -36,7 +36,7 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - ubuntu-22.04
+          - self-hosted
         node-version:
           - 18
           - 20
@@ -44,15 +44,15 @@ jobs:
         experimental:
           - false
         include:
-          - os: windows-latest
-            # latest LTS
-            node-version: 20
-            experimental: false
-          - os: macos-latest
-            # latest LTS
-            node-version: 20
-            experimental: false
-          - os: ubuntu-22.04
+          #   - os: windows-latest
+          #     # latest LTS
+          #     node-version: 20
+          #     experimental: false
+          #   - os: macos-latest
+          #     # latest LTS
+          #     node-version: 20
+          #     experimental: false
+          - os: self-hosted
             node-version: 22-nightly
             experimental: true
 
@@ -101,7 +101,7 @@ jobs:
     strategy:
       matrix:
         os:
-          - ubuntu-22.04
+          - self-hosted
         node-version:
           # oldest LTS
           - 18
@@ -141,7 +141,7 @@ jobs:
       - check-skippable
       - test
       - build-lint
-    runs-on: ubuntu-22.04
+    runs-on: self-hosted
     permissions:
       actions: read
     timeout-minutes: 10

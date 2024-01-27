@@ -38,6 +38,7 @@ jobs:
         os:
           - self-hosted
         node-version:
+          - 16.14.0
           - 18
           - 20
           - 21

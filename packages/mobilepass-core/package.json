@@ -30,8 +30,13 @@
     "lint:eslint": "eslint --color .",
     "lint:tsc": "tsc --noEmit"
   },
-  "dependencies": {},
+  "dependencies": {
+    "base32-decode": "1.0.0"
+  },
   "engines": {
     "node": ">= 16.14.0"
+  },
+  "devDependencies": {
+    "@types/node": "16.18.76"
   }
 }

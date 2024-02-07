@@ -57,7 +57,11 @@ importers:
         specifier: 1.2.2
         version: 1.2.2
 
-  packages/mobilepass-core: {}
+  packages/mobilepass-core:
+    dependencies:
+      base32-decode:
+        specifier: 1.0.0
+        version: 1.0.0
 
 packages:
 
@@ -1601,6 +1605,10 @@ packages:
   /balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
     dev: true
+
+  /base32-decode@1.0.0:
+    resolution: {integrity: sha512-KNWUX/R7wKenwE/G/qFMzGScOgVntOmbE27vvc6GrniDGYb6a5+qWcuoXl8WIOQL7q0TpK7nZDm1Y04Yi3Yn5g==}
+    dev: false
 
   /better-path-resolve@1.0.0:
     resolution: {integrity: sha512-pbnl5XzGBdrFU/wT4jqmJVPn2B6UHPBOhzMQkY/SPUPB6QtUXtmBHBIwCbXJol93mOpGMnQyP/+BB19q04xj7g==}

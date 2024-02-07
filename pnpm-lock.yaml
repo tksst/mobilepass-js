@@ -62,10 +62,6 @@ importers:
       base32-decode:
         specifier: 1.0.0
         version: 1.0.0
-    devDependencies:
-      '@types/node':
-        specifier: 16.18.76
-        version: 16.18.76
 
 packages:
 
@@ -1130,10 +1126,6 @@ packages:
 
   /@types/node@12.20.55:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
-    dev: true
-
-  /@types/node@16.18.76:
-    resolution: {integrity: sha512-/GsO2uv1Z6R42lBr59dtem56gVF/yHKQaScggwU+gLU6DXE25sDmOar4c4IfWb3h+X/7OYZznPOFk7oGF3jQSA==}
     dev: true
 
   /@types/normalize-package-data@2.4.4:

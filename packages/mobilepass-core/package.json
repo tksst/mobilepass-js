@@ -13,17 +13,26 @@
   },
   "type": "module",
   "exports": {
-    "import": "./dist/lib/index.js",
-    "require": "./dist/lib/index.cjs"
+    ".": {
+      "node": {
+        "import": "./dist/lib/node.js",
+        "require": "./dist/lib/node.cjs"
+      },
+      "default": {
+        "import": "./dist/lib/index.js",
+        "require": "./dist/lib/index.cjs"
+      }
+    }
   },
-  "types": "./dist/lib/index.d.ts",
   "scripts": {
     "clean": "tss-rmrf ./dist/",
     "build": "run-s --continue-on-error clean build:*",
     "build:lib": "tsup --config ./tsup.config.lib.mjs",
+    "build:node": "tsup --config ./tsup.config.node.mjs",
     "prepack": "pnpm build",
     "watch": "npm-run-all clean --parallel --continue-on-error --print-label watch:*",
     "watch:lib": "pnpm build:lib --watch",
+    "watch:node": "pnpm build:node --watch",
     "fix": "run-s --continue-on-error fix:*",
     "fix:eslint": "pnpm lint:eslint --fix",
     "lint": "run-p --continue-on-error --print-label lint:*",
@@ -34,9 +43,6 @@
     "base32-decode": "1.0.0"
   },
   "engines": {
-    "node": ">= 16.14.0"
-  },
-  "devDependencies": {
-    "@types/node": "16.18.76"
+    "node": ">= 15.0.0"
   }
 }

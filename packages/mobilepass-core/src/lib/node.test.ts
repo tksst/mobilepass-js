@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { InvalidActivationCodeError } from "../utils/utils.js";
-import { generate } from "./main.js";
+import { generate, InvalidActivationCodeError } from "./node.js";
 
 const actCode1 = "XUU75-RROTT-Y5IP6-U3BMV";
 const actCode2 = "2G5NX-EYGRU-6IRP6-KDDG3";

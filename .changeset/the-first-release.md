@@ -2,4 +2,4 @@
 "mobilepass": major
 ---
 
-The first release
+The first alpha release

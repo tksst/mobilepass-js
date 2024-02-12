@@ -18,6 +18,8 @@ jobs:
       # create a PR
       contents: write
       pull-requests: write
+      # Publishing packages with provenance
+      id-token: write
 
     runs-on: ubuntu-latest
 

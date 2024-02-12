@@ -1,0 +1,149 @@
+name: Build, Lint and Test
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches-ignore:
+      # When you enable the release workflow, change the line below to your main branch
+      # to avoid the duplicate action worktime.
+      - change-this-to-default-branch-when-the-release-workflow-enabled
+
+jobs:
+  check-skippable:
+    continue-on-error: true
+    runs-on: ubuntu-22.04
+    permissions:
+      actions: write
+      contents: read
+    timeout-minutes: 10
+    outputs:
+      skippable: ${{ steps.check.outputs.should_skip }}
+    steps:
+      - id: check
+        uses: fkirc/skip-duplicate-actions@f75f66ce1886f00957d99748a42c724f4330bdcf # v5.3.1
+
+  test:
+    name: Test
+    needs: check-skippable
+    if: needs.check-skippable.outputs.skippable != 'true'
+    permissions:
+      contents: read
+      actions: read
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-22.04
+        node-version:
+          - 18
+          - 20
+          - 21
+        experimental:
+          - false
+        include:
+          - os: windows-latest
+            # latest LTS
+            node-version: 20
+            experimental: false
+          - os: macos-latest
+            # latest LTS
+            node-version: 20
+            experimental: false
+          - os: ubuntu-22.04
+            node-version: 22-nightly
+            experimental: true
+
+    runs-on: ${{ matrix.os }}
+    continue-on-error: ${{ matrix.experimental }}
+
+    steps:
+      - name: Collect Workflow Telemetry
+        uses: catchpoint/workflow-telemetry-action@6705383eabd01833acfe8412ec697384830e1455 # v1.8.7
+        with:
+          # Set to true to publish the results as comment to the PR (applicable if workflow run is triggered by PR).
+          comment_on_pr: false
+
+      - name: Checkout the source
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+          show-progress: false
+          submodules: recursive
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d # v3.0.0
+        with:
+          standalone: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - run: pnpm test
+
+  build-lint:
+    name: Build and Lint
+    needs: check-skippable
+    if: needs.check-skippable.outputs.skippable != 'true'
+    permissions:
+      contents: read
+      actions: read
+    timeout-minutes: 10
+
+    # Using matrix strategy, OS and Node version will be displayed in a title of a job.
+    strategy:
+      matrix:
+        os:
+          - ubuntu-22.04
+        node-version:
+          # oldest LTS
+          - 18
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Collect Workflow Telemetry
+        uses: catchpoint/workflow-telemetry-action@6705383eabd01833acfe8412ec697384830e1455 # v1.8.7
+
+      - name: Checkout the source
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+          show-progress: false
+          submodules: recursive
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d # v3.0.0
+        with:
+          standalone: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - run: pnpm build
+
+      - run: pnpm lint
+
+  action-timeline:
+    needs:
+      - check-skippable
+      - test
+      - build-lint
+    runs-on: ubuntu-22.04
+    permissions:
+      actions: read
+    timeout-minutes: 10
+    steps:
+      - uses: Kesin11/actions-timeline@40b912d44677e158feec8015d092b5428f9c8247 # v2.0.2

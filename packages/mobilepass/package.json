@@ -17,6 +17,12 @@
   "type": "module",
   "exports": {
     ".": {
+      "browser": "./dist/lib/index.js",
+      "deno": "./dist/lib/index.js",
+      "bun": {
+        "import": "./dist/lib/index.js",
+        "require": "./dist/lib/index.cjs"
+      },
       "node": {
         "import": "./dist/lib/node.js",
         "require": "./dist/lib/node.cjs"

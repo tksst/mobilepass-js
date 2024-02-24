@@ -1,8 +1,0 @@
-{
-  "mode": "exit",
-  "tag": "alpha",
-  "initialVersions": {
-    "mobilepass": "0.0.0-development"
-  },
-  "changesets": []
-}

@@ -1,5 +1,11 @@
 # mobilepass
 
+## 0.0.0-alpha.1
+
+### Patch Changes
+
+- a6f3f9e: fix: not working with Next.js Edge Runtime, see https://github.com/vercel/edge-runtime/issues/813
+
 ## 0.0.0-alpha.0
 
 ### Major Changes

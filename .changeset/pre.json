@@ -5,6 +5,7 @@
     "mobilepass": "0.0.0-development"
   },
   "changesets": [
+    "fix-not-working-with-nextjs-edge",
     "the-first-release"
   ]
 }

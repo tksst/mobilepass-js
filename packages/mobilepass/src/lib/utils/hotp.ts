@@ -20,7 +20,7 @@ function truncate(mac: Uint8Array, digits: number): number {
     return value % 10 ** digits;
 }
 
-export async function hotpSHA256(key: ArrayBuffer | ArrayBufferView, counter: number | bigint): Promise<string> {
+export async function hotpSHA256(key: ArrayBuffer, counter: number | bigint): Promise<string> {
     if (counter < 0) {
         throw new RangeError(`counter: ${counter} is not a natural number.`);
     }

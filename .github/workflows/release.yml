@@ -4,6 +4,8 @@ on:
     branches:
       - main
 
+concurrency: release
+
 jobs:
   build-lint-test:
     uses: ./.github/workflows/build-lint-test.yml

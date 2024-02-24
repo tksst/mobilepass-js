@@ -1,5 +1,11 @@
 # mobilepass
 
+## 0.0.0
+
+### Major Changes
+
+- 0ba9ce9: The first release
+
 ## 0.0.0-alpha.1
 
 ### Patch Changes

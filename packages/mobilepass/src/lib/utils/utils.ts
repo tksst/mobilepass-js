@@ -1,4 +1,4 @@
-import base32Decode from "base32-decode";
+import { base32 } from "rfc4648";
 
 import { sha256 } from "./crypto.js";
 
@@ -22,7 +22,7 @@ export function activationCodeToKey(activationCode: string): Uint8Array {
 
     const decoded = (() => {
         try {
-            return base32Decode(`${result[1]}${result[2]}${result[3]}${result[4]}`, "RFC4648");
+            return base32.parse(`${result[1]}${result[2]}${result[3]}${result[4]}`);
         } catch (error) {
             throw new InvalidActivationCodeError(errorStr, { cause: error });
         }

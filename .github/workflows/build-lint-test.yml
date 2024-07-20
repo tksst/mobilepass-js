@@ -66,7 +66,7 @@ jobs:
           comment_on_pr: false
 
       - name: Checkout the source
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
         with:
           show-progress: false
           submodules: recursive
@@ -77,7 +77,7 @@ jobs:
           standalone: true
 
       - name: Setup Node.js
-        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
+        uses: actions/setup-node@1e60f620b9541d16bece96c5465dc8ee9832be0b # v4.0.3
         with:
           node-version: ${{ matrix.node-version }}
           cache: pnpm
@@ -112,7 +112,7 @@ jobs:
         uses: catchpoint/workflow-telemetry-action@94c3c3d9567a0205de6da68a76c428ce4e769af1 # v2.0.0
 
       - name: Checkout the source
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
         with:
           show-progress: false
           submodules: recursive
@@ -123,7 +123,7 @@ jobs:
           standalone: false
 
       - name: Setup Node.js
-        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
+        uses: actions/setup-node@1e60f620b9541d16bece96c5465dc8ee9832be0b # v4.0.3
         with:
           node-version: ${{ matrix.node-version }}
           cache: pnpm
@@ -146,4 +146,4 @@ jobs:
       actions: read
     timeout-minutes: 10
     steps:
-      - uses: Kesin11/actions-timeline@6905b677e042d41193107842cc5c7b715bef0042 # v2.0.3
+      - uses: Kesin11/actions-timeline@da70beff098ff89b15d279e8bf2f60519a8dadd7 # v2.2.0

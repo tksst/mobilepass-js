@@ -18,7 +18,7 @@
     "@tksst/eslint-config": "14.0.0",
     "@tksst/prettier-config": "1.1.0",
     "@tksst/project-configs": "4.0.1",
-    "@vitest/coverage-v8": "2.1.9",
+    "@vitest/coverage-v8": "3.0.5",
     "better-typescript-lib": "2.10.1",
     "eslint": "9.20.0",
     "husky": "9.1.7",
@@ -28,7 +28,7 @@
     "secretlint": "9.0.0",
     "tsup": "8.3.6",
     "typescript": "5.7.3",
-    "vitest": "2.1.9"
+    "vitest": "3.0.5"
   },
   "packageManager": "pnpm@9.13.2",
   "lint-staged": {
